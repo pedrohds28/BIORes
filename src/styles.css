@@ -1,0 +1,303 @@
+/* Variables */
+:root {
+    /* Colors */
+    --primary-bg: #0e1411;
+    --secondary-bg: #131a16;
+    --tertiary-bg: #1e3b2b;
+    --primary-hover-bg: #1f4932;
+    --secondary-hover-bg: #1a3627;
+    --primary-color: #53b888;
+    --secondary-color: #96d6b3;
+    --tertiary-color: #2d7a4f;
+    --content-color: #daf5e9;
+    --border-color: #2d4a3a;
+}
+
+/* Containers */
+html, body, header, nav, main, aside {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--content-color);
+}
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(15px);
+    padding: 1rem 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+main {
+    padding: 5vh 20vw;
+}
+@media (max-width: 1024px) {
+    main {
+        padding: 5vh 5vw;
+    }
+}
+main:last-child {
+    margin-bottom: 0;
+}
+#text {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+aside {
+    display: none;
+}
+footer {
+    border-top: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+    padding: 5vh 5vw;
+}
+
+/* Components */
+#logo, .dropdown-btn, figure {
+    user-select: none;
+}
+
+#logo {
+    margin: 0;
+    font-weight: 600;
+}
+
+#menu {
+    background-color: transparent;
+    border: none;
+    color: var(--content-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    min-width: 20%;
+}
+.dropdown-btn {
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.1rem;
+    list-style: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.dropdown-btn:hover {
+    background-color: var(--primary-hover-bg);
+}
+.dropdown-icon {
+    font-size: 1.6rem;
+}
+.arrow {
+    margin-left: 1.6rem;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--secondary-color);
+    transition: transform 0.2s ease;
+}
+.dropdown[open] .arrow {
+    transform: rotate(180deg);
+}
+.dropdown-content {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 87%;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--secondary-bg);
+    padding: 0.8rem 1rem;
+    overflow: hidden;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.4);
+    z-index: 10;
+}
+.dropdown-content ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.dropdown-content li a {
+    display: block;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.dropdown-content li a:hover {
+    background-color: var(--secondary-hover-bg);
+}
+
+figure {
+    margin: 0 0 1.5rem 0;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    text-align: center;
+}
+.img-container {
+    position: relative;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    height: fit-content;
+    min-height: 350px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--tertiary-bg);
+    color: var(--primary-color);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+figcaption {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.quote {
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    background-color: var(--tertiary-bg);
+    padding: 1rem 1.5rem;
+}
+.txt {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+}
+.author {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+.note {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--tertiary-bg);
+    padding: 1rem 1.5rem;
+    text-align: justify;
+}
+
+.references {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.references li {
+    line-height: 1.5;
+}
+.references a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.references a:hover {
+    text-decoration: underline;
+}
+.references a::before {
+    content: "<";
+}
+.references a::after {
+    content: ">";
+}
+.references b {
+    font-weight: 600;
+}
+#contacts {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 1024px) {
+    #contacts {
+        display: block;
+    }
+    .contact {
+        margin-bottom: 1.5rem;
+    }
+    .contact:last-of-type {
+        margin-bottom: 0;
+    }
+}
+#contacts .ico {
+    display: inline;
+    font-size: 1.5rem;
+}
+#contacts a {
+    margin-top: 0.3rem;
+    display: block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+#contacts a:hover {
+    text-decoration: underline;
+}
+
+#copyright {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+/* Fonts */
+h1, h2, h3, h4, b {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+h1 {
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+}
+h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+    color: var(--tertiary-color);
+    border-bottom: 1px solid;
+}
+p {
+    text-align: justify;
+    line-height: 1.5;
+}
