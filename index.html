@@ -12,7 +12,7 @@
 <body>
     <header>
         <h1 id="logo">BIORes</h1>
-        <button type="button" id="menu">☰</button>
+        <button type="button" id="openMenu" class="menu-btn">☰</button>
     </header>
     <nav>
         <details class="dropdown" name="navbar">
@@ -85,7 +85,19 @@
             </ul>
         </section>
     </main>
-    <aside id="menu"></aside>
+    <div id="overlay"></div>
+    <aside id="menu">
+        <div>
+            <h1>Menu</h1>
+            <button type="button" id="closeMenu" class="menu-btn">&times;</button>
+        </div>
+        <ul id="menu-list">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Salvos</a></li>
+            <li><a href="#">Configurações</a></li>
+        </ul>
+    </aside>
     <footer>
         <section id="contacts">
             <div class="contact">
@@ -106,5 +118,6 @@
         </section>
         <section id="copyright">© 2026 BIORes. Todos os direitos reservados.</section>
     </footer>
+    <script src="./src/scripts.js"></script>
 </body>
 </html>

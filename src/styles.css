@@ -47,11 +47,6 @@ nav {
 main {
     padding: 5vh 20vw;
 }
-@media (max-width: 1024px) {
-    main {
-        padding: 5vh 5vw;
-    }
-}
 main:last-child {
     margin-bottom: 0;
 }
@@ -61,12 +56,30 @@ main:last-child {
     border-bottom: 2px solid var(--border-color);
 }
 aside {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -30vw;
+    height: 100%;
+    width: 30vw;
+    border-left: 1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+    padding: 1.5rem 2rem;
+    transition: 0.2s ease;
+    z-index: 30;
 }
 footer {
     border-top: 1px solid var(--border-color);
     background-color: var(--secondary-bg);
     padding: 5vh 5vw;
+}
+@media (max-width: 1024px) {
+    main {
+        padding: 5vh 5vw;
+    }
+    aside {
+        right: -55vw;
+        width: 55vw;
+    }
 }
 
 /* Components */
@@ -79,13 +92,58 @@ footer {
     font-weight: 600;
 }
 
-#menu {
+.menu-btn {
     background-color: transparent;
     border: none;
     color: var(--content-color);
     font-size: 1.6rem;
     cursor: pointer;
 }
+aside div {
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+aside .menu-btn {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+aside ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+aside a {
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 0.5rem;
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+aside a:hover {
+    text-decoration: underline;
+}
+aside.active {
+    right: 0;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0e1411cc;
+    backdrop-filter: blur(3px);
+    z-index: 25;
+}
+#overlay.active {
+    display: block;
+}
+
 
 .dropdown {
     position: relative;
@@ -241,17 +299,6 @@ figcaption {
     justify-content: space-between;
     align-items: center;
 }
-@media (max-width: 1024px) {
-    #contacts {
-        display: block;
-    }
-    .contact {
-        margin-bottom: 1.5rem;
-    }
-    .contact:last-of-type {
-        margin-bottom: 0;
-    }
-}
 #contacts .ico {
     display: inline;
     font-size: 1.5rem;
@@ -272,6 +319,17 @@ figcaption {
     text-align: center;
     font-size: 0.8rem;
     color: var(--secondary-color);
+}
+@media (max-width: 1024px) {
+    #contacts {
+        display: block;
+    }
+    .contact {
+        margin-bottom: 1.5rem;
+    }
+    .contact:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 /* Fonts */
