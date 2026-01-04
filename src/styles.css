@@ -299,18 +299,24 @@ figcaption {
     justify-content: space-between;
     align-items: center;
 }
-#contacts .ico {
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.contact .ico {
+    width: fit-content;
     display: inline;
     font-size: 1.5rem;
 }
-#contacts a {
+.contact a {
     margin-top: 0.3rem;
     display: block;
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
 }
-#contacts a:hover {
+.contact a:hover {
     text-decoration: underline;
 }
 
