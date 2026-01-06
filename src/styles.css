@@ -17,12 +17,14 @@
 html, body, header, nav, main, aside {
     box-sizing: border-box;
 }
+
 html, body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--primary-bg);
     color: var(--content-color);
+    scroll-behavior: smooth;
 }
 header {
     position: sticky;
@@ -208,6 +210,39 @@ aside.active {
 }
 .dropdown-content li a:hover {
     background-color: var(--secondary-hover-bg);
+}
+
+#index {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.5rem 0;
+    background-color: var(--secondary-bg);
+}
+#index h2 {
+    margin: 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+#index > ol {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+#index > ol ol {
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+#index li {
+    line-height: 1.6;
+}
+#index a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+#index a:hover {
+    text-decoration: underline;
 }
 
 figure {
