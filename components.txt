@@ -1,0 +1,53 @@
+Título 1: <h1>Matéria</h1>
+
+Título 2: <h2>Assunto</h2>
+
+Título 3: <h3 id="">Tópico</h3>
+
+Título 4: <h4 id="">Subtópico</h4>
+
+Quebra de Seção: <hr>
+
+Lista de Conteúdos:
+<div class="contents-list">
+    <h2>Conteúdos</h2>
+    <ol>
+        <li>
+            <a href="#">Tópico</a>
+            <ol>
+                <li><a href="#">Subtópico</a></li>
+            </ol>
+        </li>
+    </ol>
+</div>
+
+Parágrafo: <p></p>
+
+Figura:
+<figure>
+    <div class="img-title">Título</div>
+    <div class="img-container">
+        <img src="" alt="">
+    </div>
+    <figcaption>FONTE (2026)</figcaption>
+</figure>
+
+Citação:
+<div class="quote">
+    <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsum sapiente necessitatibus vero tenetur soluta similique neque laudantium, commodi ad, ab dolores blanditiis hic iusto architecto impedit eos placeat doloremque?</div>
+    <div class="author">DE TAL, Fulano (2026)</div>
+</div>
+
+Nota/Observação:
+<div class="note">
+    <b>Nota: </b>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, fugiat blanditiis eveniet pariatur dignissimos quos ab non assumenda magni qui, eaque officiis mollitia ut cumque repellat, nihil totam veritatis reprehenderit.
+</div>
+
+Referências:
+<div class="references">
+    <h3>Referências</h3>
+    <ul>
+        <li>DE TAL, Fulano. <b>Exemplo de Referência</b>. Disponível em: <a href=""></a></li>
+    </ul>
+</div>
