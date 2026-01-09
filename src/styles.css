@@ -117,6 +117,12 @@ footer {
     cursor: pointer;
 }
 
+.functions {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
 #menu {
     position: fixed;
     top: 0;

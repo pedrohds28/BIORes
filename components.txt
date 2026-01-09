@@ -34,14 +34,14 @@ Figura:
 
 Citação:
 <div class="quote">
-    <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsum sapiente necessitatibus vero tenetur soluta similique neque laudantium, commodi ad, ab dolores blanditiis hic iusto architecto impedit eos placeat doloremque?</div>
+    <div class="text"></div>
     <div class="author">DE TAL, Fulano (2026)</div>
 </div>
 
 Nota/Observação:
 <div class="note">
     <b>Nota: </b>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, fugiat blanditiis eveniet pariatur dignissimos quos ab non assumenda magni qui, eaque officiis mollitia ut cumque repellat, nihil totam veritatis reprehenderit.
+    Lorem
 </div>
 
 Referências:

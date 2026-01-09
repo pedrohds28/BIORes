@@ -14,7 +14,10 @@
             <span class="icon">🧬</span>
             <h1>BIORes</h1>
         </div>
-        <button type="button" id="openMenu" class="menu-btn">☰</button>
+        <div class="functions">
+            <button type="button" onclick="favoritar('John Doe', 'Introdução á Zoologia');" class="menu-btn" title="Salvar como favorito">☆</button> <!--★-->
+            <button type="button" id="openMenu" class="menu-btn">☰</button>
+        </div>
     </header>
     <nav>
         <details class="dropdown" name="dropdown">
@@ -24,11 +27,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="#">Introdução à Zoologia</a></li>
                 </ul>
             </div>
         </details>
@@ -39,11 +38,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="../botanica/intro.html">Introdução à Botânica</a></li>
                 </ul>
             </div>
         </details>
@@ -54,16 +49,26 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="../biocel/intro.html">Introdução à Biologia Celular</a></li>
                 </ul>
             </div>
         </details>
     </nav>
     <main>
+        <h1>Zoologia</h1>
+        <hr>
+        <h2>Introdução</h2>
+        <div class="contents-list">
+            <h2>Conteúdos</h2>
+            <ol>
+                <li>
+                    <a href="#"></a>
+                    <ol>
+                        <li><a href="#"></a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
     </main>
     <div id="overlay"></div>
     <aside id="menu">
@@ -72,10 +77,10 @@
             <button type="button" id="closeMenu" class="menu-btn">&times;</button>
         </div>
         <ul id="menu-list">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Salvos</a></li>
-            <li><a href="#">Configurações</a></li>
+            <li><a href="../../../index.html">Início</a></li>
+            <li><a href="#">Perfil (em breve)</a></li>
+            <li><a href="#">Favoritos (em breve)</a></li>
+            <li><a href="#">Configurações (em breve)</a></li>
         </ul>
     </aside>
     <footer>
