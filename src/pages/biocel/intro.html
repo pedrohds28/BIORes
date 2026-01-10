@@ -5,85 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="shortcut icon" href="../../assets/mainIcon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/icon.png" type="image/x-icon">
 
-    <title>BIORes</title>
+    <title>BIORes | BioCel</title>
 </head>
 <body>
     <header>
-        <h1 id="logo">BIORes|BioCel</h1>
-        <button type="button" id="openMenu" class="menu-btn">☰</button>
+        <div id="logo">
+            <span class="icon">🧬</span>
+            <h1>BIORes</h1>
+        </div>
+        <div class="functions">
+            <button type="button" onclick="favoritar('John Doe', 'Introdução à Biologia Celular');" class="menu-btn" title="Salvar como favorito">☆</button> <!--★-->
+            <button type="button" id="openMenu" class="menu-btn">☰</button>
+        </div>
     </header>
     <nav>
-        <details class="dropdown" name="navbar">
-            <summary class="dropdown-btn"><span><span class="dropdown-icon">🐾</span> Zoologia</span><span class="arrow"></span></summary>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🐾 Zoologia
+                <span class="icon"></span>
+            </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="../zoologia/intro.html">Introdução à Zoologia</a></li>
                 </ul>
             </div>
         </details>
-        <details class="dropdown" name="navbar">
-            <summary class="dropdown-btn"><span><span class="dropdown-icon">🌱</span> Botânica</span><span class="arrow"></span></summary>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🌱 Botânica
+                <span class="icon"></span>
+            </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="../botanica/intro.html">Introdução à Botânica</a></li>
                 </ul>
             </div>
         </details>
-        <details class="dropdown" name="navbar">
-            <summary class="dropdown-btn"><span><span class="dropdown-icon">🧬</span> BioCel</span><span class="arrow"></span></summary>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🔬 BioCel
+                <span class="icon"></span>
+            </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="">Assunto 1</a></li>
-                    <li><a href="">Assunto 2</a></li>
-                    <li><a href="">Assunto 3</a></li>
-                    <li><a href="">Assunto 4</a></li>
-                    <li><a href="">Assunto 5</a></li>
+                    <li><a href="#">Introdução à Biologia Celular</a></li>
                 </ul>
             </div>
         </details>
     </nav>
-    <main id="content">
-        <section id="text">
-            <h1>Matéria</h1>
-            <h2>Assunto</h2>
-            <h3>1. Tópico</h3>
-            <h4>1.1. Subtópico</h4>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis minima ab, molestias obcaecati rerum repudiandae ducimus autem, dicta omnis nam nesciunt fugit quisquam temporibus, suscipit sit eius numquam illo ratione!</p>
-            <div class="quote">
-                <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni molestias odio optio, blanditiis aliquid quam sint asperiores est esse quibusdam ipsam. Aliquid unde eaque porro sed modi amet possimus beatae.</p>
-                <div class="author">~ DOE, John (2026)</div>
-            </div>
-            <figure>
-                <div class="img-container">
-                    <img src="https://alfabeto.pt/wp-abc/wp-content/uploads/2020/07/imagem-001-letra-a-imprensa.png" alt="Exemplo de Imagem">
-                </div>
-                <figcaption>
-                    <div><b>Figura 1: </b>Exemplo de Título</div>
-                    <div>Fonte: Exemplo de Fonte</div>
-                </figcaption>
-            </figure>
-            <div class="note">
-                <b>Nota: </b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.
-            </div>
-        </section>
-        <section id="references">
-            <h3>Referências</h3>
-            <ul class="references">
-                <li>TESTE, teste. <b>Exemplo de exemplo</b>. Disponível em: <a href="#">https://example.com</a>.</li>
-                <li>TESTE, teste. <b>Exemplo de exemplo</b>. Disponível em: <a href="#">https://example.com</a>.</li>
-                <li>TESTE, teste. <b>Exemplo de exemplo</b>. Disponível em: <a href="#">https://example.com</a>.</li>
-            </ul>
-        </section>
+    <main>
+        <h1>Biologia Celular</h1>
+        <hr>
+        <h2>Introdução</h2>
+        <div class="contents-list">
+            <h2>Conteúdos</h2>
+            <ol>
+                <li>
+                    <a href="#"></a>
+                    <ol>
+                        <li><a href="#"></a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
     </main>
     <div id="overlay"></div>
     <aside id="menu">
@@ -92,37 +78,37 @@
             <button type="button" id="closeMenu" class="menu-btn">&times;</button>
         </div>
         <ul id="menu-list">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Salvos</a></li>
-            <li><a href="#">Configurações</a></li>
+            <li><a href="../../../index.html">Início</a></li>
+            <li><a href="#">Perfil (em breve)</a></li>
+            <li><a href="../favoritos.html">Favoritos</a></li>
+            <li><a href="#">Configurações (em breve)</a></li>
         </ul>
     </aside>
     <footer>
-        <section id="contacts">
+        <div id="contacts">
             <div class="contact">
                 <div>
-                    <span class="ico">✉️</span>
-                    <b>Email</b>
+                    <span class="icon">📩</span>
+                    <span class="title">Email</span>
                 </div>
-                <a href="mailto:example@example.com">example@example.com</a>
+                <a href="mailto:pedroh.dsilva28@gmail.com">pedroh.dsilva28@gmail.com</a>
             </div>
             <div class="contact">
                 <div>
-                    <span class="ico">📱</span>
-                    <b>Telefone</b>
+                    <span class="icon">📒</span>
+                    <span class="title">Github</span>
                 </div>
-                <a href="tel:+12 (34) 9678-9000">+12 (34) 9678-9000</a>
+                <a href="https://github.com/pedrohds28">github.com/pedrohds28</a>
             </div>
             <div class="contact">
                 <div>
-                    <span class="ico">📍</span>
-                    <b>Localização</b>
+                    <span class="icon">🆔</span>
+                    <span class="title">LinkedIn</span>
                 </div>
-                <a href="#">Xique-Xique/BA</a>
+                <a href="https://www.linkedin.com/in/pedroh-dsilva28/">www.linkedin.com/in/pedroh-dsilva28</a>
             </div>
-        </section>
-        <section id="copyright">© 2026 BIORes. Todos os direitos reservados.</section>
+        </div>
+        <h5 id="copyright">2026 BIORes</h5>
     </footer>
     <script src="../../scripts.js"></script>
 </body>

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="shortcut icon" href="../../assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
 
-    <title>BIORes | Zoologia</title>
+    <title>BIORes | Favoritos</title>
 </head>
 <body>
     <header>
@@ -15,10 +15,7 @@
             <span class="icon">🧬</span>
             <h1>BIORes</h1>
         </div>
-        <div class="functions">
-            <button type="button" onclick="favoritar('John Doe', 'Introdução à Zoologia');" class="menu-btn" title="Salvar como favorito">☆</button> <!--★-->
-            <button type="button" id="openMenu" class="menu-btn">☰</button>
-        </div>
+        <button type="button" id="openMenu" class="menu-btn">☰</button>
     </header>
     <nav>
         <details class="dropdown" name="dropdown">
@@ -28,7 +25,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="#">Introdução à Zoologia</a></li>
+                    <li><a href="zoologia/intro.html">Introdução à Zoologia</a></li>
                 </ul>
             </div>
         </details>
@@ -39,7 +36,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="../botanica/intro.html">Introdução à Botânica</a></li>
+                    <li><a href="botanica/intro.html">Introdução à Botânica</a></li>
                 </ul>
             </div>
         </details>
@@ -50,25 +47,16 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="../biocel/intro.html">Introdução à Biologia Celular</a></li>
+                    <li><a href="biocel/intro.html">Introdução à Biologia Celular</a></li>
                 </ul>
             </div>
         </details>
     </nav>
     <main>
-        <h1>Zoologia</h1>
+        <h1>Seus Resumos Favoritos</h1>
         <hr>
-        <h2>Introdução</h2>
-        <div class="contents-list">
-            <h2>Conteúdos</h2>
-            <ol>
-                <li>
-                    <a href="#"></a>
-                    <ol>
-                        <li><a href="#"></a></li>
-                    </ol>
-                </li>
-            </ol>
+        <div id="favorites-list">
+            <h2>Carregando favoritos...</h2>
         </div>
     </main>
     <div id="overlay"></div>
@@ -78,9 +66,9 @@
             <button type="button" id="closeMenu" class="menu-btn">&times;</button>
         </div>
         <ul id="menu-list">
-            <li><a href="../../../index.html">Início</a></li>
+            <li><a href="../../index.html">Início</a></li>
             <li><a href="#">Perfil (em breve)</a></li>
-            <li><a href="../favoritos.html">Favoritos</a></li>
+            <li><a href="#">Favoritos</a></li>
             <li><a href="#">Configurações (em breve)</a></li>
         </ul>
     </aside>
@@ -110,6 +98,9 @@
         </div>
         <h5 id="copyright">2026 BIORes</h5>
     </footer>
-    <script src="../../scripts.js"></script>
+    <script src="../scripts.js"></script>
+    <script>
+        window.onload = () => loadFavorites('John Doe');
+    </script>
 </body>
 </html>

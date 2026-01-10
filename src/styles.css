@@ -59,7 +59,7 @@ ul { list-style: none; }
 }
 :any-link:hover { text-decoration: underline; }
 
-.contents-list, figure, .note {
+.contents-list, figure, .note, #favorites-list {
     border-radius: var(--radius-md);
     border: var(--border-sm);
     padding: var(--padding-md);
@@ -183,6 +183,9 @@ footer {
 }
 
 .contact a, #copyright { text-align: center; }
+
+#favorites-list > * { margin-bottom: var(--margin-sm); }
+#favorites-list:last-child { margin-bottom: 0; }
 
 /* Reusable Components */
 .icon {
@@ -328,6 +331,12 @@ hr {
     margin: 0 0 inherit;
     border: var(--border-sm);
 }
+.fav-card a {
+    border-radius: var(--radius-sm);
+    padding: var(--padding-sm);
+    display: block;
+}
+.fav-card a:hover { background-color: var(--bg-secondary-hover); }
 
 /* Typography */
 h1, h2, h3, h4, h5 {
