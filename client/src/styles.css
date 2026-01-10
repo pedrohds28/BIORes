@@ -292,7 +292,7 @@ figcaption::before { content: "Fonte: "; }
     align-items: center;
 }
 
-img {
+figure img {
     width: 100%;
     height: auto;
     border-radius: inherit;
@@ -313,6 +313,11 @@ img {
 .quote .author {
     font-weight: 600;
     color: var(--color-secondary);
+}
+
+ul.list {
+    padding-left: 2rem;
+    list-style: disc;
 }
 
 .references ul {

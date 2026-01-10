@@ -1,16 +1,28 @@
 # Bem Vindo ao BIORes!
 
-**BIORes** é um projeto para meu estudo particular de ferramentas de **web design** e **web dev** (além das matérias da faculdade :D).
+**BIORes** é um projeto para meu estudo particular de ferramentas de **web design** e **web development**, integrando os conteúdos da faculdade de biologia com uso de tecnologia.
 
-É um site que, *por ora*, apenas comporta resumos prontos das matérias, mas pretendo implementar novas funcionalidades, como:
+A princípio, o projeto era um site estático, mas foi evoluído para uma aplicação fullstack, permitindo a persistência de dados na nuvem.
 
-* Criação de conta e perfil;
-* Salvar resumos favoritos;
-* Salvar trechos de destaque.
+### Funcionalidades Implementadas:
+
+* **Leitura de Resumos:** Acesso a conteúdos organizados de diversas matérias.
+* **Sistema de Favoritos:** Integração com API própria para salvar e remover resumos favoritos.
+* **Banco de Dados Cloud:** Armazenamento persistente utilizando MongoDB Cloud.
+* **API REST:** Backend construído em Node.js para gerenciamento de dados.
 
 ### Ferramentas Utilizadas:
 
 * Frontend: <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=flat-square&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=flat-square&logo=javascript&logoColor=%23F7DF1E" />
 * Backend: <img src="https://img.shields.io/badge/node.js-6DA55F?style=flat-square&logo=node.js&logoColor=white" /> <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat-square&logo=mongodb&logoColor=white" />
 
-É um projeto inicial (como um teste)! Após sua conclusão, planejo desenvolver um webapp de criação, formatação e gerenciamento de resumos, com ferramentas mais complexas.
+### Estrutura do Projeto:
+
+* `/client`: Interface do usuário (HTML, CSS e JS).
+* `/server`: Servidor Node.js, rotas da API e modelos de dados.
+
+### Próximos Passos:
+
+* Criação de conta e autenticação de perfil;
+* Sistema de busca dinâmica de conteúdos;
+* Salvar trechos de destaque nos textos.
