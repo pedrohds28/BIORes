@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
 
-    <title>BIORes | Favoritos</title>
+    <title>BIORes | Login</title>
 </head>
 <body>
     <header>
@@ -53,10 +53,24 @@
         </details>
     </nav>
     <main>
-        <h1>Seus Resumos Favoritos</h1>
+        <h1 id="form-title">Fazer Login</h1>
         <hr>
-        <div id="favorites-list">
-            <h2>Carregando favoritos...</h2>
+        <form action="" id="login-form">
+            <div id="name-field">
+                <label for="name">Nome Completo</label>
+                <input type="text" name="name" id="name" placeholder="Seu nome">
+            </div>
+        
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required placeholder="Seu e-mail">
+            
+            <label for="password">Senha</label>
+            <input type="password" name="password" id="password" required placeholder="Sua senha">
+
+            <button type="submit" id="form-btn">Entrar</button>
+        </form>
+        <div class="note">
+            Não tem uma conta? <a href="#" id="toggle-link">Cadastre-se!</a>
         </div>
     </main>
     <div id="overlay"></div>
@@ -68,7 +82,7 @@
         <ul id="menu-list">
             <li><a href="../../index.html">Início</a></li>
             <li><a href="#">Perfil (em breve)</a></li>
-            <li><a href="#">Favoritos</a></li>
+            <li><a href="favoritos.html">Favoritos</a></li>
             <li><a href="#">Configurações (em breve)</a></li>
         </ul>
     </aside>
@@ -98,10 +112,7 @@
         </div>
         <h5 id="copyright">2026 BIORes</h5>
     </footer>
-        <script src="../scripts/main.js"></script>
-    <script src="../scripts/favoritos.js"></script>
-    <script>
-        window.onload = () => loadFavorites('John Doe');
-    </script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>

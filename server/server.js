@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const User = require('./models/User');
 require('dotenv').config();
 
 const app = express();
@@ -58,6 +60,24 @@ app.delete('/favorites', async (req, res) => {
     } catch (error) {
         console.error("[API] Erro ao deletar favorito:", error);
         res.status(500).json({ message: "Erro ao remover favorito." });
+    }
+});
+
+app.post('/auth/signup', async (req, res) => {
+    const { name, email, password } = req.body;
+    try {
+        const userExists = await User.findOne({ email });
+        if (userExists) {
+            return res.status(400).json({ message: "Este e-mail já está cadastrado!" });
+        }
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const newUser =  new User({ name, email, password: hashedPassword });
+        await newUser.save();
+        res.status(201).json({ message: "Usuário criado!" });
+    } catch (error) {
+        console.error("[Auth] Erro no cadastro:", error);
+        res.status(500).json({ message: "Erro ao criar conta." });
     }
 });
 

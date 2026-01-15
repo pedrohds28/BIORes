@@ -59,13 +59,13 @@ ul { list-style: none; }
 }
 :any-link:hover { text-decoration: underline; }
 
-.contents-list, figure, .note, #favorites-list {
+.contents-list, figure, .note, #favorites-list, #login-form {
     border-radius: var(--radius-md);
     border: var(--border-sm);
     padding: var(--padding-md);
 }
 
-.contents-list, figure { background-color: var(--bg-secondary); }
+.contents-list, figure, #login-form { background-color: var(--bg-secondary); }
 
 .quote, .note { background-color: var(--bg-tertiary); }
 
@@ -186,6 +186,42 @@ footer {
 
 #favorites-list > * { margin-bottom: var(--margin-sm); }
 #favorites-list:last-child { margin-bottom: 0; }
+
+#login-form, #name-field{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#login-form { margin: 0 10vw 1rem; }
+
+#name-field { display: none; }
+
+#login-form label {
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+#login-form input {
+    border-radius: var(--radius-sm);
+    border: var(--border-sm);
+    background-color: var(--bg-primary);
+    padding: var(--padding-sm);
+    color: var(--color-main);
+}
+
+#form-btn {
+    border-radius: var(--radius-sm);
+    border: var(--border-sm);
+    background-color: var(--bg-tertiary);
+    padding: var(--padding-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+#form-btn:hover {
+    background: var(--bg-secondary-hover);
+}
 
 /* Reusable Components */
 .icon {
