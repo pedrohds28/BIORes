@@ -23,6 +23,5 @@ A princípio, o projeto era um site estático, mas foi evoluído para uma aplica
 
 ### Próximos Passos:
 
-* Criação de conta e autenticação de perfil;
 * Sistema de busca dinâmica de conteúdos;
 * Salvar trechos de destaque nos textos.
