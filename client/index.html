@@ -15,7 +15,10 @@
             <span class="icon">🧬</span>
             <h1>BIORes</h1>
         </div>
-        <button type="button" id="openMenu" class="menu-btn">☰</button>
+        <div class="functions">
+            <button id="logout-btn" onclick="logout()">Sair</button>
+            <button type="button" id="openMenu" class="menu-btn">☰</button>
+        </div>
     </header>
     <nav>
         <details class="dropdown" name="dropdown">
@@ -53,7 +56,7 @@
         </details>
     </nav>
     <main>
-        <h1>Bem vindo(a) ao BIORes!</h1>
+        <h1>Bem vindo(a)<span id="userName-display"></span> ao BIORes!</h1>
         <hr>
         <h2>Sobre o Projeto</h2>
         <p><b>BIORes</b> é um projeto criado para meu estudo particular de ferramentas de <b>web design</b> e <b>web development</b>, integrando os conteúdos da faculdade de biologia com uso de tecnologia.</p>
@@ -106,7 +109,7 @@
         </div>
         <ul id="menu-list">
             <li><a href="#">Início</a></li>
-            <li><a href="#">Perfil (em breve)</a></li>
+            <li><a href="src/pages/login.html" id="profile-toggle">Login</a></li>
             <li><a href="src/pages/favoritos.html">Favoritos</a></li>
             <li><a href="#">Configurações (em breve)</a></li>
         </ul>
@@ -137,6 +140,11 @@
         </div>
         <h5 id="copyright">2026 BIORes</h5>
     </footer>
-    <script src="src/scripts.js"></script>
+    <script src="src/scripts/main.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            verifyLogin('src/pages/login.html','src/pages/profile.html');
+        })
+    </script>
 </body>
 </html>

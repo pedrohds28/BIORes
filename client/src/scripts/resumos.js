@@ -1,15 +1,19 @@
 // Check Favorites Logic
-async function uploadStatusBtn(user) {
+async function uploadStatusBtn() {
+    const user = localStorage.getItem('userEmail');
+    const token = localStorage.getItem('token');
     const url = window.location.pathname;
     const btn = document.getElementById('fav-btn');
 
-    if (!btn) {
-        console.warn("[Favoritos] Botão de favoritos não encontrado na página.");
-        return;
-    }
+    if (!btn) { return; }
 
     try {
-        const response = await fetch(`http://localhost:8080/favorites/check?user=${user}&url=${url}`);
+        const response = await fetch(`http://localhost:8080/favorites/check?user=${user}&url=${url}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         const data = await response.json();
     
         if (data.favorited) {
@@ -19,17 +23,18 @@ async function uploadStatusBtn(user) {
             btn.innerText = '☆';
             btn.dataset.active = "false";
         }
-    } catch(error) {
+    } catch (error) {
         console.error("[Favoritos] Erro ao verificar status do botão:", error);
     }
 }
 
 // Save/Delete as Favorite Logic
-async function favoritar(user, title) {
+async function favoritar(title) {
+    const user = localStorage.getItem('userEmail');
+    const token = localStorage.getItem('token');
     const url = window.location.pathname;
     const btn = document.getElementById('fav-btn');
     const isFavorite = btn.dataset.active === "true";
-
     const method = isFavorite? 'DELETE': 'POST';
 
     const data = {
@@ -41,7 +46,10 @@ async function favoritar(user, title) {
     try {
         const response = await fetch('http://localhost:8080/favorites', {
             method: method,
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify(data)
         });
 
@@ -60,5 +68,3 @@ async function favoritar(user, title) {
         console.error("[Favoritos] Erro ao processar o clique no favorito:", error);
     }
 }
-
-window.addEventListener('DOMContentLoaded', () => { uploadStatusBtn('John Doe') });

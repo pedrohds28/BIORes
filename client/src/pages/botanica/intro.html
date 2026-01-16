@@ -16,7 +16,8 @@
             <h1>BIORes</h1>
         </div>
         <div class="functions">
-            <button type="button" onclick="favoritar('John Doe', 'Introdução à Botânica');" class="menu-btn" title="Salvar como favorito">☆</button> <!--★-->
+            <button id="logout-btn" onclick="logout()">Sair</button>
+            <button type="button" onclick="favoritar('Introdução à Botânica');" id="fav-btn" class="menu-btn"data-active="false">☆</button>
             <button type="button" id="openMenu" class="menu-btn">☰</button>
         </div>
     </header>
@@ -79,7 +80,7 @@
         </div>
         <ul id="menu-list">
             <li><a href="../../../index.html">Início</a></li>
-            <li><a href="#">Perfil (em breve)</a></li>
+            <li><a href="../login.html" id="profile-toggle">Login</a></li>
             <li><a href="../favoritos.html">Favoritos</a></li>
             <li><a href="#">Configurações (em breve)</a></li>
         </ul>
@@ -110,7 +111,13 @@
         </div>
         <h5 id="copyright">2026 BIORes</h5>
     </footer>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/resumos.js"></script>
+    <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/resumos.js"></script>
+        <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            verifyLogin('../login.html','../profile.html');
+            uploadStatusBtn();
+        })
+    </script>
 </body>
 </html>

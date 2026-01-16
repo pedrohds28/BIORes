@@ -41,10 +41,15 @@ loginForm.addEventListener('submit', async (event) => {
         const result = await response.json();
         if (response.ok) {
             alert(result.message);
-            if (!isLogin) {
-                toggleLink.click();
+            if (isLogin) {
+                localStorage.setItem('token', result.token);
+                localStorage.setItem('userName', result.userName);
+                localStorage.setItem('userEmail', result.userEmail)
+                alert(`Bem vindo(a), ${result.userName}!`);
+                window.location.href = '../../index.html';
             } else {
-                console. log("Sucesso no login!");
+                alert(result.message);
+                toggleLink.click();
             }
         } else {
             alert(result.message);

@@ -16,3 +16,33 @@ const _closeMenu = () => {
 
 closeMenuBtn.addEventListener('click', _closeMenu);
 overlay.addEventListener('click', _closeMenu);
+
+// Is logged Functions
+const profileToggle = document.getElementById('profile-toggle');
+const logoutBtn = document.getElementById('logout-btn');
+
+function verifyLogin(loginURL, profileURL) {
+    const userName = localStorage.getItem('userName');
+
+    if (userName) {
+        console.log(`[Auth] Usuário logado: ${userName}`);
+        logoutBtn.style.display = 'inline-block';
+        const display = document.getElementById('userName-display');
+        if (display) { display.innerText = `, ${userName},` }
+        profileToggle.innerText = 'Perfil';
+        profileToggle.href = profileURL.toString();
+    } else {
+        console.log(`[Auth] Usuário deslogou!`);
+        logoutBtn.styles.display = 'none';
+        const display = document.getElementById('userName-display');
+        if (display) { display.innerText = '' }
+        profileToggle.innerText = 'Login';
+        profileToggle.href = loginURL.toString();
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    window.location.href = '/client/index.html'
+}

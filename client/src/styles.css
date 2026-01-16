@@ -107,21 +107,29 @@ footer {
 /* Especific Elements */
 #logo { display: flex; }
 
-.menu-btn {
-    background-color: transparent;
-    border: none;
-    font-weight: 600;
-    font-size: 1.6rem;
-    line-height: 1;
-    color: var(--color-main);
-    cursor: pointer;
-}
-
 .functions {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
 }
+
+#logout-btn, .menu-btn {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-main);
+    cursor: pointer;
+}
+
+#logout-btn {
+    font-size: 1.2rem;
+    display: none;
+}
+#logout-btn:hover { text-decoration: underline; }
+
+.menu-btn { font-size: 1.6rem; }
 
 #menu {
     position: fixed;
@@ -207,6 +215,7 @@ footer {
     border: var(--border-sm);
     background-color: var(--bg-primary);
     padding: var(--padding-sm);
+    font-family: inherit;
     color: var(--color-main);
 }
 
@@ -215,6 +224,7 @@ footer {
     border: var(--border-sm);
     background-color: var(--bg-tertiary);
     padding: var(--padding-sm);
+    font-family: inherit;
     font-weight: 700;
     color: var(--color-primary);
     cursor: pointer;

@@ -15,7 +15,10 @@
             <span class="icon">🧬</span>
             <h1>BIORes</h1>
         </div>
-        <button type="button" id="openMenu" class="menu-btn">☰</button>
+        <div class="functions">
+            <button id="logout-btn" onclick="logout()">Sair</button>
+            <button type="button" id="openMenu" class="menu-btn">☰</button>
+        </div>
     </header>
     <nav>
         <details class="dropdown" name="dropdown">
@@ -67,7 +70,7 @@
         </div>
         <ul id="menu-list">
             <li><a href="../../index.html">Início</a></li>
-            <li><a href="#">Perfil (em breve)</a></li>
+            <li><a href="login.html" id="profile-toggle">Login</a></li>
             <li><a href="#">Favoritos</a></li>
             <li><a href="#">Configurações (em breve)</a></li>
         </ul>
@@ -101,7 +104,10 @@
         <script src="../scripts/main.js"></script>
     <script src="../scripts/favoritos.js"></script>
     <script>
-        window.onload = () => loadFavorites('John Doe');
+        window.addEventListener('DOMContentLoaded', () => {
+            verifyLogin('src/pages/login.html','src/pages/profile.html');
+        })
+        window.onload = () => loadFavorites();
     </script>
 </body>
 </html>
