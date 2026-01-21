@@ -59,13 +59,13 @@ ul { list-style: none; }
 }
 :any-link:hover { text-decoration: underline; }
 
-.contents-list, figure, .note, #favorites-list, #login-form {
+.contents-list, figure, .note, #favorites-list, #login-form, .profile-list {
     border-radius: var(--radius-md);
     border: var(--border-sm);
     padding: var(--padding-md);
 }
 
-.contents-list, figure, #login-form { background-color: var(--bg-secondary); }
+.contents-list, figure, #login-form, .profile-list { background-color: var(--bg-secondary); }
 
 .quote, .note { background-color: var(--bg-tertiary); }
 
@@ -232,6 +232,11 @@ footer {
 #form-btn:hover {
     background: var(--bg-secondary-hover);
 }
+
+.profile-list > * { margin-bottom: 0.5rem; }
+.profile-list:last-child { margin-bottom: 0; }
+
+.profile-list > * b { color: var(--color-primary); }
 
 /* Reusable Components */
 .icon {

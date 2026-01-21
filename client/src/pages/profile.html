@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
+
+    <title>BIORes | Perfil</title>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <span class="icon">🧬</span>
+            <h1>BIORes</h1>
+        </div>
+        <div class="functions">
+            <button id="logout-btn" onclick="logout()">Sair</button>
+            <button type="button" id="openMenu" class="menu-btn">☰</button>
+        </div>
+    </header>
+    <nav>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🐾 Zoologia
+                <span class="icon"></span>
+            </summary>
+            <div class="dropdown-content">
+                <ul>
+                    <li><a href="zoologia/intro.html">Introdução à Zoologia</a></li>
+                </ul>
+            </div>
+        </details>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🌱 Botânica
+                <span class="icon"></span>
+            </summary>
+            <div class="dropdown-content">
+                <ul>
+                    <li><a href="botanica/intro.html">Introdução à Botânica</a></li>
+                </ul>
+            </div>
+        </details>
+        <details class="dropdown" name="dropdown">
+            <summary class="dropdown-btn">
+                🔬 BioCel
+                <span class="icon"></span>
+            </summary>
+            <div class="dropdown-content">
+                <ul>
+                    <li><a href="biocel/intro.html">Introdução à Biologia Celular</a></li>
+                </ul>
+            </div>
+        </details>
+    </nav>
+    <main>
+        <h1>Seu Perfil</h1>
+        <hr>
+        <div class="profile-list">
+            <h2>Dados Pessoais</h2>
+            <div><b>Nome: </b><span id="display-name"></span></div>
+            <div><b>E-mail: </b><span id="display-email"></span></div>
+        </div>
+        <div class="profile-list">
+            <h2>Estatísticas</h2>
+            <div><b>Quantidade de favoritos:</b> <span id="fav-count"></span></div>
+        </div>
+    </main>
+    <div id="overlay"></div>
+    <aside id="menu">
+        <div>
+            <h1>Menu</h1>
+            <button type="button" id="closeMenu" class="menu-btn">&times;</button>
+        </div>
+        <ul id="menu-list">
+            <li><a href="../../index.html">Início</a></li>
+            <li><a href="#" id="profile-toggle">Login</a></li>
+            <li><a href="favoritos.html">Favoritos</a></li>
+            <li><a href="#">Configurações (em breve)</a></li>
+        </ul>
+    </aside>
+    <footer>
+        <div id="contacts">
+            <div class="contact">
+                <div>
+                    <span class="icon">📩</span>
+                    <span class="title">Email</span>
+                </div>
+                <a href="mailto:pedroh.dsilva28@gmail.com">pedroh.dsilva28@gmail.com</a>
+            </div>
+            <div class="contact">
+                <div>
+                    <span class="icon">📒</span>
+                    <span class="title">Github</span>
+                </div>
+                <a href="https://github.com/pedrohds28">github.com/pedrohds28</a>
+            </div>
+            <div class="contact">
+                <div>
+                    <span class="icon">🆔</span>
+                    <span class="title">LinkedIn</span>
+                </div>
+                <a href="https://www.linkedin.com/in/pedroh-dsilva28/">www.linkedin.com/in/pedroh-dsilva28</a>
+            </div>
+        </div>
+        <h5 id="copyright">2026 BIORes</h5>
+    </footer>
+        <script src="../scripts/main.js"></script>
+    <script src="../scripts/perfil.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            verifyLogin('src/pages/login.html','#');
+        })
+        window.onload = () => loadProfile();
+    </script>
+</body>
+</html>
