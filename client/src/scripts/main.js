@@ -33,7 +33,7 @@ function verifyLogin(loginURL, profileURL) {
         profileToggle.href = profileURL.toString();
     } else {
         console.log(`[Auth] Usuário deslogou!`);
-        logoutBtn.styles.display = 'none';
+        logoutBtn.style.display = 'none';
         const display = document.getElementById('userName-display');
         if (display) { display.innerText = '' }
         profileToggle.innerText = 'Login';

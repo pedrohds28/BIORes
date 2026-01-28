@@ -1,3 +1,5 @@
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,9 +12,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("[Database] Conexão estabelecida com secesso ao MongoDB."))
-    .catch(error => console.error("[Database] Erro fatal na conexão:", error));
+mongoose.set('bufferCommands', true); 
+
+mongoose.connect(process.env.MONGO_URI, {
+    connectTimeoutMS: 20000,
+    socketTimeoutMS: 45000,
+    family: 4,
+    // Essa opção força o driver a não usar o buffering do MongoDB
+    directConnection: true 
+})
+.then(() => console.log("✅ CONECTADO!"))
+.catch(err => console.log("❌ ERRO:", err.message));
 
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -94,6 +104,10 @@ app.post('/auth/signup', async (req, res) => {
 });
 
 app.post('/auth/login', async (req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        return res.status(503).json({ message: "O banco de dados ainda não está pronto. Aguarde 5 segundos e tente novamente." });
+    }
+
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
