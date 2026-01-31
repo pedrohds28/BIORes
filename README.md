@@ -8,7 +8,7 @@ A princípio, o projeto era um site estático, mas foi evoluído para uma aplica
 
 * **Leitura de Resumos:** Acesso a conteúdos organizados de diversas matérias.
 * **Sistema de Favoritos:** Integração com API própria para salvar e remover resumos favoritos.
-* **Banco de Dados Cloud:** Armazenamento persistente utilizando MongoDB Cloud.
+* **Banco de Dados:** Armazenamento utilizando MongoDB.
 * **API REST:** Backend construído em Node.js para gerenciamento de dados.
 
 ### Ferramentas Utilizadas:
@@ -23,5 +23,6 @@ A princípio, o projeto era um site estático, mas foi evoluído para uma aplica
 
 ### Próximos Passos:
 
+* Refinar sistema de apresentação dos resumos (em andamento);
 * Sistema de busca dinâmica de conteúdos;
 * Salvar trechos de destaque nos textos.

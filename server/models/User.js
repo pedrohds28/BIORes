@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  nome: { type: String, required: true },
+  name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
-  favoritos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Resumo' }],
-  marcacoes: [{
+  password: { type: String, required: true },
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Resumo' }],
+  highlights: [{
     idResumo: { type: mongoose.Schema.Types.ObjectId, ref: 'Resumo' },
-    texto: String,
-    data: { type: Date, default: Date.now }
+    text: String,
+    date: { type: Date, default: Date.now }
   }]
 });
 
