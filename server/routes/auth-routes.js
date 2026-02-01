@@ -5,14 +5,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 
-// Register Route
+// [POST] Signup
 router.post('/signup', async (req, res) => {
     try {
-        console.log("Dados recebidos no signup:", req.body); // Deletar depois
-
         const { name, email, password } = req.body;
-
-        if (!name || !email || !password) { return res.status(400).json({ message: "Preencha todos os campos!" }); }
+        if (!name || !email || !password) { return res.status(400).json({ message: 'Preencha todos os campos!' }); }
 
         let user = await User.findOne({ email });
         if (user) { return res.status(400).json({ message: 'Este email já está cadastrado.' }); }
@@ -20,33 +17,29 @@ router.post('/signup', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        user = new User({
-            name: name,
-            email: email,
-            password: hashedPassword
-        });
+        user = new User({ name: name, email: email, password: hashedPassword });
         await user.save();
 
-        console.log("Usuário cadastrado com sucesso"); // Deletar depois
+        console.log(`Novo usuário cadastrado: ${email}`);
         res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
     } catch (error) {
-        console.error("Erro no signup:", error);
-        res.status(500).json({ message: 'Erro interno no servidor:', error: error.message });
+        console.error("[Auth] Erro no signup:", error);
+        res.status(500).json({ message: 'Erro interno no servidor' });
     }
 });
 
-// Login Route
+// [POST] Login
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-
         const user = await User.findOne({ email });
-        if (!user) { return res.status(400).json({ message: 'E-mail incorreto.' }); }
+
+        if (!user) { return res.status(400).json({ message: 'E-mail ou senha incoretos.' }); }
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) { return res.status(400).json({ message: 'Senha incorreta.' }); }
+        if (!isMatch) { return res.status(400).json({ message: 'E-mail ou senha incoretos.' }); }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '2h' });
 
         res.json({
             token,
@@ -57,25 +50,25 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// User Data Route
+// [GET] User Data
 router.get('/user', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao buscar dados do usuário' });
+        res.status(500).json({ message: '[API] Erro ao buscar dados do usuário.' });
     }
 });
 
-// Favorites Route
-router.get('/favorites', auth, async (req, res) => {
+// [POST] Toggle Favorites
+router.post('/favorites', auth, async (req, res) => {
     try {
-        const { idResumo } = req.body;
+        const { resumoId } = req.body;
         const user = await User.findById(req.user.id);
 
-        const index = user.favorites.indexOf(idResumo);
+        const index = user.favorites.indexOf(resumoId);
         if (index === -1) {
-            user.favorites.push(idResumo);
+            user.favorites.push(resumoId);
         } else {
             user.favorites.splice(index, 1);
         }
@@ -83,6 +76,7 @@ router.get('/favorites', auth, async (req, res) => {
         await user.save();
         res.json({ favorites: user.favorites });
     } catch (error) {
+        console.error('[Auth] Erro ao favoritar:', error)
         res.status(500).json({ message: 'Erro ao salvar favorito' });
     }
 });

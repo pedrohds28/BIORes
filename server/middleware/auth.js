@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
-    const tolken = req.header('x-auth-token');
+    const token = req.header('x-auth-token');
 
-    if (!tolken) { return res.status(401).json({ message: 'Acesso negado. Token não fornecido.' }); }
+    if (!token) { return res.status(401).json({ message: '[Auth] Acesso negado. Token não fornecido.' }); }
 
     try {
-        const decoded = jwt.verify(tolken, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
     } catch (error) {
-        res.status(400).json({ message: 'Token inválido.' });
+        res.status(400).json({ message: '[Auth] Token inválido.' });
     }
 };

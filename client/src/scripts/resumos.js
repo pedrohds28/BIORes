@@ -1,4 +1,4 @@
-let currentResumo = '';
+let currentResumoId = '';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -12,24 +12,22 @@ window.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch(`http://localhost:5000/api/resumos/${slug}`);
         if (response.ok) {
-            const resumoData = await response.json();
-            const resumoContainer = document.getElementById('resumo-container');
+            const data = await response.json();
+            currentResumoId = data._id;
             
-            resumoContainer.innerHTML = `
-                <h1>${resumoData.category}</h1>
+            document.getElementById('resumo-container').innerHTML = `
+                <h1>${data.category}</h1>
                 <hr>
-                <h2>${resumoData.title}</h2>
-                ${resumoData.content}
+                <h2>${data.title}</h2>
+                ${data.content}
             `;
-
-            currentResumo = resumoData._id;
 
             checkFavoriteStatus();
         } else {
             showToast('Resumo não encontrado', 'error');
         }
     } catch (error) {
-        console.error('Erro ao carregar resumo:', error);
+        console.error('[API] Erro ao carregar:', error);
     }
 });
 
@@ -40,41 +38,38 @@ async function checkFavoriteStatus() {
     if (!token || !favoriteBtn) { return; }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/auth/user`, {
+        const res = await fetch(`http://localhost:5000/api/auth/user`, {
             headers: { 'x-auth-token': token }
         });
-        const user = await response.json();
+        const user = await res.json();
 
-        if (user.favorites && user.favorites.includes(currentResumo)) {
-            favoriteBtn.innerText = '★';
-            favoriteBtn.dataset.active = 'true';
-        } else {
-            favoriteBtn.innerText = '☆';
-            favoriteBtn.dataset.active = 'false';
-        }
+        const isFavorited = user.favorites?.includes(currentResumoId);
+        favoriteBtn.innerText = isFavorited ? '★' : '☆';
+        favoriteBtn.dataset.active = isFavorited;
     } catch (error) {
-        console.error('Erro ao verificar favoritos:', error);
+        console.error('[API] Erro nos favoritos:', error);
     }
 }
 
 async function toggleFavorito() {
     const token = localStorage.getItem('token');
-    if (!token) {
-        showToast("Faça login para favoritar!", "info");
-        return;
-    }
+    if (!token) { showToast('Faça login para favoritar!', 'info'); }
 
-    const res = await fetch('http://localhost:5000/api/auth/favorites', {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-            'x-auth-token': token 
-        },
-        body: JSON.stringify({ resumoId: currentResumo })
-    });
+    try {
+        const res = await fetch('http://localhost:5000/api/auth/favorites', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'x-auth-token': token 
+            },
+            body: JSON.stringify({ resumoId: currentResumoId })
+        });
 
-    if (res.ok) {
-        checkFavoriteStatus();
-        showToast("Lista de favoritos atualizada!", "success");
+        if (res.ok) {
+            checkFavoriteStatus();
+            showToast('Favoritos atualizados!', 'success');
+        }
+    } catch (error) {
+        showToast('Erro ao processar favorito.', 'error');
     }
 }
