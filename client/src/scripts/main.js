@@ -38,3 +38,50 @@ function showToast(message, type = 'success') {
         });
     }, 3000);
 }
+
+// Is Logged Logic
+function verifyLogin() {
+    const token = localStorage.getItem('token');
+    const profileToggle = document.getElementById('profile-toggle');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    const path = window.location.pathname;
+    let loginLink, profileLink;
+
+    if (path.includes('/pages/')) {
+        loginLink = 'login.html';
+        profileLink = 'profile.html';
+    } else {
+        loginLink = 'src/pages/login.html';
+        profileLink = 'src/pages/profile.html';
+    }
+
+    if (token) {
+        if (profileToggle) {
+            profileToggle.innerText = 'Perfil';
+            profileToggle.href = profileLink;
+        }
+
+        if (logoutBtn) { logoutBtn.style.display = 'block'; }
+    } else {
+        if (profileToggle) {
+            profileToggle.innerText = 'Login';
+            profileToggle.href = loginLink;
+        }
+
+        if (logoutBtn) { logoutBtn.style.display = 'none'; }
+    }
+}
+
+function logout() {
+    localStorage.clear();
+    
+    const path = window.location.pathname;
+    if (path.includes('/pages/')) {
+        window.location.href = '../../index.html';
+    } else {
+        window.location.href = 'index.html';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', verifyLogin);

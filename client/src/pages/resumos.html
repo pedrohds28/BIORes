@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="shortcut icon" href="../../assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="shortcut icon" href="../assets/icon.png" type="image/x-icon">
 
     <title>BIORes | Zoologia</title>
 </head>
@@ -17,7 +17,7 @@
         </div>
         <div class="functions">
             <button id="logout-btn" onclick="logout()">Sair</button>
-            <button type="button" onclick="favoritar('Introdução à Zoologia');" id="fav-btn" class="menu-btn"data-active="false">☆</button>
+            <button type="button" onclick="toggleFavorito()" id="favorite-btn" class="menu-btn" data-active="false">☆</button>
             <button type="button" id="openMenu" class="menu-btn">☰</button>
         </div>
     </header>
@@ -29,7 +29,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="#">Introdução à Zoologia</a></li>
+                    <li><a href="resumos.html?title=introducao-zoologia">Introdução à Zoologia</a></li>
                 </ul>
             </div>
         </details>
@@ -40,7 +40,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="../botanica/intro.html">Introdução à Botânica</a></li>
+                    <li><a href="resumos.html?title=introducao-botanica">Introdução à Botânica</a></li>
                 </ul>
             </div>
         </details>
@@ -51,27 +51,12 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="../biocel/intro.html">Introdução à Biologia Celular</a></li>
+                    <li><a href="resumos.html?title=introducao-biocel">Introdução à Biologia Celular</a></li>
                 </ul>
             </div>
         </details>
     </nav>
-    <main>
-        <h1>Zoologia</h1>
-        <hr>
-        <h2>Introdução</h2>
-        <div class="contents-list">
-            <h2>Conteúdos</h2>
-            <ol>
-                <li>
-                    <a href="#"></a>
-                    <ol>
-                        <li><a href="#"></a></li>
-                    </ol>
-                </li>
-            </ol>
-        </div>
-    </main>
+    <main id="resumo-container"></main>
     <div id="overlay"></div>
     <aside id="menu">
         <div>

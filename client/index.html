@@ -28,7 +28,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="src/pages/zoologia/intro.html">Introdução à Zoologia</a></li>
+                    <li><a href="src/pages/resumos.html?title=introducao-zoologia">Introdução à Zoologia</a></li>
                 </ul>
             </div>
         </details>
@@ -39,7 +39,7 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="src/pages/botanica/intro.html">Introdução à Botânica</a></li>
+                    <li><a href="src/pages/resumos.html?title=introducao-botanica">Introdução à Botânica</a></li>
                 </ul>
             </div>
         </details>
@@ -50,13 +50,13 @@
             </summary>
             <div class="dropdown-content">
                 <ul>
-                    <li><a href="src/pages/biocel/intro.html">Introdução à Biologia Celular</a></li>
+                    <li><a href="src/pages/resumos.html?title=introducao-biocel">Introdução à Biologia Celular</a></li>
                 </ul>
             </div>
         </details>
     </nav>
     <main>
-        <h1>Bem vindo(a)<span id="userName-display"></span> ao BIORes!</h1>
+        <h1 id="welcome-message">Bem vindo(a), ao BIORes!</h1>
         <hr>
         <h2>Sobre o Projeto</h2>
         <p><b>BIORes</b> é um projeto criado para meu estudo particular de ferramentas de <b>web design</b> e <b>web development</b>, integrando os conteúdos da faculdade de biologia com uso de tecnologia.</p>
@@ -141,10 +141,6 @@
         <h5 id="copyright">2026 BIORes</h5>
     </footer>
     <script src="src/scripts/main.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            verifyLogin('src/pages/login.html','src/pages/profile.html');
-        })
-    </script>
+    <script src="src/scripts/index.js"></script>
 </body>
 </html>

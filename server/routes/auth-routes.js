@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const auth = require('../middleware/auth');
 
 // Register Route
 router.post('/signup', async (req, res) => {
@@ -52,7 +53,37 @@ router.post('/login', async (req, res) => {
             user: { nome: user.name, email: user.email }
         });
     } catch (error) {
-        res.status(500).json({ message: 'Erro no servidor ao fazer login.' });
+        res.status(500).json({ message: 'Erro no servidor ao fazer login' });
+    }
+});
+
+// User Data Route
+router.get('/user', auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao buscar dados do usuário' });
+    }
+});
+
+// Favorites Route
+router.get('/favorites', auth, async (req, res) => {
+    try {
+        const { idResumo } = req.body;
+        const user = await User.findById(req.user.id);
+
+        const index = user.favorites.indexOf(idResumo);
+        if (index === -1) {
+            user.favorites.push(idResumo);
+        } else {
+            user.favorites.splice(index, 1);
+        }
+
+        await user.save();
+        res.json({ favorites: user.favorites });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao salvar favorito' });
     }
 });
 

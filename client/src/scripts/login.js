@@ -16,7 +16,6 @@ toggleLink.addEventListener('click', (event) => {
     toggleLink.innerText = isLogin ? 'Cadastre-se!' : 'Já tenho conta!';
 });
 
-
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
