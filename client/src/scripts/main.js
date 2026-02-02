@@ -40,31 +40,50 @@ function showToast(message, type = 'success') {
 }
 
 // [Auth] Verify Login Status
-function verifyLogin() {
+async function verifyLogin() {
     const token = localStorage.getItem('token');
     const profileToggle = document.getElementById('profile-toggle');
     const logoutBtn = document.getElementById('logout-btn');
 
     const isInPagesDir = window.location.pathname.includes('/pages/');
-
     const loginLink = isInPagesDir ? 'login.html' : 'src/pages/login.html';
     const profileLink = isInPagesDir ? 'profile.html' : 'src/pages/profile.html';
 
-    if (token) {
-        if (profileToggle) {
-            profileToggle.innerText = 'Perfil';
-            profileToggle.href = profileLink;
-        }
-
-        if (logoutBtn) { logoutBtn.style.display = 'block'; }
-    } else {
-        if (profileToggle) {
-            profileToggle.innerText = 'Login';
-            profileToggle.href = loginLink;
-        }
-
-        if (logoutBtn) { logoutBtn.style.display = 'none'; }
+    if (!token) {
+        setLoggedOutUI(profileToggle, logoutBtn, loginLink);
+        return;
     }
+
+    try {
+        const response = await fetch('http://localhost:5000/api/auth/user', {
+            headers: { 'x-auth-token': token }
+        });
+
+        if (response.ok) {
+            setLoggedInUI(profileToggle, logoutBtn, profileLink);
+        } else {
+            console.warn('[Auth] Token inválido ou expirado.');
+            logout();
+        }
+    } catch (error) {
+        console.error('[Auth] Erro ao validar login:', error);
+    }
+}
+
+function setLoggedInUI(profileToggle, logoutBtn, profileLink) {
+    if (profileToggle) {
+        profileToggle.innerText = 'Perfil';
+        profileToggle.href = profileLink;
+    }
+    if (logoutBtn) { logoutBtn.style.display = 'block'; }
+}
+
+function setLoggedOutUI(profileToggle, logoutBtn, loginLink) {
+    if (profileToggle) {
+        profileToggle.innerText = 'Login';
+        profileToggle.href = loginLink;
+    }
+    if (logoutBtn) { logoutBtn.style.display = 'none'; }
 }
 
 function logout() {
