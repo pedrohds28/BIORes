@@ -43,7 +43,11 @@ async function checkFavoriteStatus() {
         });
         const user = await res.json();
 
-        const isFavorited = user.favorites?.includes(currentResumoId);
+        const isFavorited = user.favorites?.some(fav => {
+            const id = typeof fav === 'object' ? fav._id : fav;
+            return id === currentResumoId;
+        });
+        
         favoriteBtn.innerText = isFavorited ? '★' : '☆';
         favoriteBtn.dataset.active = isFavorited;
     } catch (error) {
@@ -67,7 +71,7 @@ async function toggleFavorito() {
 
         if (res.ok) {
             checkFavoriteStatus();
-            showToast('Favoritos atualizados!', 'success');
+            showToast('Favoritos atualizados!');
         }
     } catch (error) {
         showToast('Erro ao processar favorito.', 'error');

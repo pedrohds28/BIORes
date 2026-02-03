@@ -59,7 +59,7 @@ ul { list-style: none; }
 }
 :any-link:hover { text-decoration: underline; }
 
-.contents-list, figure, .note, #favorites-list, #login-form, .profile-list {
+.contents-list, figure, .note, .fav-card, #login-form, .profile-list {
     border-radius: var(--radius-md);
     border: var(--border-sm);
     padding: var(--padding-md);
@@ -192,9 +192,6 @@ footer {
 
 .contact a, #copyright { text-align: center; }
 
-#favorites-list > * { margin-bottom: var(--margin-sm); }
-#favorites-list:last-child { margin-bottom: 0; }
-
 #login-form, #name-field{
     display: flex;
     flex-direction: column;
@@ -233,10 +230,44 @@ footer {
     background: var(--bg-secondary-hover);
 }
 
-.profile-list > * { margin-bottom: 0.5rem; }
-.profile-list:last-child { margin-bottom: 0; }
+#favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-.profile-list > * b { color: var(--color-primary); }
+.fav-infos {
+    margin-bottom: 0.5rem;
+    border-bottom: var(--border-sm);
+    padding-bottom: 0.5rem;
+    line-height: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fav-infos b {
+    color: var(--color-primary);
+}
+.fav-infos span {
+    font-weight: 400;
+    color: var(--color-main);
+}
+
+.fav-functions > * {
+    display: inline-block;
+    border-radius: 4px;
+    border: var(--border-sm);
+    background-color: var(--bg-tertiary);
+    padding: var(--padding-sm); 
+    font: inherit;
+    font-weight: 600;
+    color: var(--color-secondary);
+    cursor: pointer;
+}
+.fav-functions > *:hover {
+    background-color: var(--bg-primary-hover);
+    text-decoration: none;
+}
 
 #toast-container {
     position: fixed;
@@ -415,12 +446,11 @@ hr {
     margin: 0 0 inherit;
     border: var(--border-sm);
 }
-.fav-card a {
-    border-radius: var(--radius-sm);
-    padding: var(--padding-sm);
-    display: block;
-}
-.fav-card a:hover { background-color: var(--bg-secondary-hover); }
+
+.profile-list > * { margin-bottom: 0.5rem; }
+.profile-list:last-child { margin-bottom: 0; }
+
+.profile-list > * b { color: var(--color-primary); }
 
 /* Typography */
 h1, h2, h3, h4, h5 {

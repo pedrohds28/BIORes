@@ -42,10 +42,10 @@ loginForm?.addEventListener('submit', async (event) => {
                 localStorage.setItem('userName', data.user.name); 
                 localStorage.setItem('userEmail', data.user.email);
 
-                showToast(`Bem vindo(a), ${data.user.name}!`, 'success');
-                setTimeout(() => { window.location.href = '../../index.html' }, 5000);
+                showToast(`Bem vindo(a), ${data.user.name}!`);
+                setTimeout(() => { window.location.href = '../../index.html' }, 3000);
             } else {
-                showToast('Conta criada! Agora faça login.', 'success');
+                showToast('Conta criada! Agora faça login.');
                 toggleLink.click();
             }
         } else {

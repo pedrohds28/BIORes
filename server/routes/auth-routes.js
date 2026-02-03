@@ -53,7 +53,9 @@ router.post('/login', async (req, res) => {
 // [GET] User Data
 router.get('/user', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password');
+        const user = await User.findById(req.user.id)
+            .select('-password')
+            .populate('favorites');
         res.json(user);
     } catch (error) {
         res.status(500).json({ message: '[API] Erro ao buscar dados do usuário.' });
