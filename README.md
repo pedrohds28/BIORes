@@ -2,7 +2,7 @@
 
 **BIORes** é um projeto para meu estudo particular de ferramentas de **web design** e **web development**, integrando os conteúdos da faculdade de biologia com uso de tecnologia.
 
-A princípio, o projeto era um site estático, mas foi evoluído para uma aplicação fullstack, permitindo a persistência de dados na nuvem.
+A princípio, o projeto era um site estático, mas foi evoluído para uma aplicação fullstack, permitindo o armazenamento de informações num banco de dados.
 
 ### Funcionalidades Implementadas:
 
