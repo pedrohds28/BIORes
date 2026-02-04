@@ -1,3 +1,55 @@
+// [UI] Load Navbar
+async function loadNavbar() {
+    const navbar = document.querySelector('nav');
+    if (!navbar) { return; }
+
+    const isInPagesDir = window.location.pathname.includes('/pages/');
+    const urlBase = isInPagesDir ? 'resumos.html' : 'src/pages/resumos.html';
+
+    try {
+        const response = await fetch('http://localhost:5000/api/resumos');
+        const resumos = await response.json();
+
+        const categoryIcons = {
+            'Zoologia': '🐾',
+            'Botânica': '🌱',
+            'Biologia Celular': '🔬',
+            'Genética': '🧬',
+            'Sistemática Biológica': '🌿'
+        };
+
+        const grouped = resumos.reduce((acc, resumo) => {
+            if (!acc[resumo.category]) { acc[resumo.category] = []; }
+            acc[resumo.category].push(resumo);
+            return acc;
+        }, {});
+
+        let navHTML = '';
+        for (const category in grouped) {
+            const icon = categoryIcons[category] || '📚';
+            navHTML += `
+                <details class="dropdown" name="dropdown">
+                    <summary class="dropdown-btn">
+                        ${icon} ${category}
+                        <span class="icon"></span>
+                    </summary>
+                    <div class="dropdown-content">
+                        <ul>
+                            ${grouped[category].map(r => `
+                                <li><a href="${urlBase}?title=${r.slug}">${r.title}</a></li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </details>
+            `;
+        }
+
+        navbar.innerHTML = navHTML;
+    } catch (error) {
+        console.error('[Navbar] Erro ao carregar navbar:', error);
+    }
+}
+
 // [UI] Menu Hamburguer
 const openMenuBtn = document.getElementById('openMenu');
 const closeMenuBtn = document.getElementById('closeMenu');
@@ -92,4 +144,8 @@ function logout() {
     window.location.href = isInPagesDir ? 'login.html' : 'src/pages/login.html';
 }
 
-document.addEventListener('DOMContentLoaded', verifyLogin);
+// [UI] DOMContentLoaded Event
+document.addEventListener('DOMContentLoaded', () => {
+    loadNavbar();
+    verifyLogin();
+});
