@@ -1,5 +1,20 @@
-// [UI] Load Navbar
+// Global Variables
+let allResumos = [];
+
+// [API] Load Resumos
 async function loadNavbar() {
+    try {
+        const response = await fetch('http://localhost:5000/api/resumos');
+        allResumos = await response.json();
+        renderNavbar(allResumos);
+        initSearch();
+    } catch (error) {
+        console.error('[Navbar] Erro ao carregar resumos:', error);
+    }
+}
+
+// [UI] Render Navbar
+async function renderNavbar(resumos) {
     const navbar = document.querySelector('nav');
     if (!navbar) { return; }
 
@@ -7,9 +22,6 @@ async function loadNavbar() {
     const urlBase = isInPagesDir ? 'resumos.html' : 'src/pages/resumos.html';
 
     try {
-        const response = await fetch('http://localhost:5000/api/resumos');
-        const resumos = await response.json();
-
         const categoryIcons = {
             'Zoologia': '🐾',
             'Botânica': '🌱',
@@ -35,8 +47,8 @@ async function loadNavbar() {
                     </summary>
                     <div class="dropdown-content">
                         <ul>
-                            ${grouped[category].map(r => `
-                                <li><a href="${urlBase}?title=${r.slug}">${r.title}</a></li>
+                            ${grouped[category].map(resumo => `
+                                <li><a href="${urlBase}?title=${resumo.slug}">${resumo.title}</a></li>
                             `).join('')}
                         </ul>
                     </div>
@@ -48,6 +60,49 @@ async function loadNavbar() {
     } catch (error) {
         console.error('[Navbar] Erro ao carregar navbar:', error);
     }
+}
+
+// [Search] Real-time Search Functionality
+function initSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput || !searchResults) { return; }
+
+    searchInput.addEventListener('input', (event) => {
+        const term = event.target.value.toLowerCase();
+
+        if (term.length < 2) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        const filtered = allResumos.filter(resumo => resumo.title.toLowerCase().includes(term) || resumo.category.toLowerCase().includes(term));
+
+        renderSearchResults(filtered, searchResults);
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.search-container')) { searchResults.style.display = 'none'; }
+    });
+}
+
+// [UI] Render Search Results
+function renderSearchResults(results, container) {
+    if (results.length === 0) {
+        container.innerHTML = '<div class="search-item">Nenhum resultado encontrado.</div>';
+    } else {
+        const isInPagesDir = window.location.pathname.includes('/pages/');
+        const urlBase = isInPagesDir ? 'resumos.html' : 'src/pages/resumos.html';
+
+        container.innerHTML = results.map(resumo => `
+            <a href="${urlBase}?title=${resumo.slug}">
+                <span class="search-title">${resumo.title}</span>
+                <span class="search-category">${resumo.category}</span>
+            </a>
+        `).join('');
+    }
+    container.style.display = 'block';
 }
 
 // [UI] Menu Hamburguer
