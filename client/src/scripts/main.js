@@ -87,7 +87,7 @@ function initSearch() {
     });
 }
 
-// [UI] Render Search Results
+// [UI/UX] Render Search Results
 function renderSearchResults(results, container) {
     if (results.length === 0) {
         container.innerHTML = '<div class="search-item">Nenhum resultado encontrado.</div>';
@@ -96,7 +96,7 @@ function renderSearchResults(results, container) {
         const urlBase = isInPagesDir ? 'resumos.html' : 'src/pages/resumos.html';
 
         container.innerHTML = results.map(resumo => `
-            <a href="${urlBase}?title=${resumo.slug}">
+            <a href="${urlBase}?title=${resumo.slug}" class="search-item">
                 <span class="search-title">${resumo.title}</span>
                 <span class="search-category">${resumo.category}</span>
             </a>

@@ -296,6 +296,39 @@ footer {
 .toast.info { border-color: var(--color-border-info); }
 .toast.fade-out { animation: toastOut 0.3s ease-in forwards; }
 
+#search-input {
+    width: 40vw;
+    border-radius: var(--radius-sm);
+    border: var(--border-sm);
+    background-color: var(--bg-primary);
+    padding: var(--padding-sm);
+    font-family: inherit;
+    color: var(--color-main);
+}
+
+.results-dropdown {
+    position: absolute;
+    top: 85%;
+    width: 40vw;
+    border-radius: var(--radius-md);
+    border: var(--border-sm);
+    background-color: var(--bg-secondary);
+    padding: var(--padding-sm);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.4);
+}
+
+.results-dropdown > * {
+    display: block;
+    border-radius: var(--radius-sm);
+    padding: var(--padding-sm);
+}
+
+.search-item > * { display: block; }
+
+.search-category {
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+}
 
 /* Reusable Components */
 .icon {
