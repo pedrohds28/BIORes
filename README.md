@@ -24,5 +24,4 @@ A princípio, o projeto era um site estático, mas foi evoluído para uma aplica
 ### Próximos Passos:
 
 * Salvar trechos de destaque nos textos;
-* Sistema de busca dinâmica de conteúdos;
 * Sistema de configurações e preferências (acessibilidade).
